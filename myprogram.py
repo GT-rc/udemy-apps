@@ -298,6 +298,8 @@ Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/file
 $ python
 Python 3.6.3 |Anaconda, Inc.| (default, Oct 15 2017, 03:27:45) [MSC v.1900 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
+
+# Opening the data file
 >>> import json
 >>> data = json.load(open("./data.json", 'r'))
 >>> type(data)
@@ -307,6 +309,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 ps of water.']
 >>> exit()
 
+# Return an entry
 Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
 $ python app1.py
 ['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
@@ -328,6 +331,7 @@ Traceback (most recent call last):
     return data[search_key]
 KeyError: 'dsfdfg'
 
+# Verify entry is in dict and return error if it's not
 Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
 $ python app1.py
 Enter a word: rain
@@ -345,6 +349,7 @@ Enter a word: RiAns
 That word is not in my dictionary, sorry. Please try a different word or another resource.
 RaIn
 
+# Sanitize input for case.
 Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
 $ RaIn
 Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
@@ -379,6 +384,7 @@ $ python app1.py
 Enter a word: wea9ther
 That word is not in my dictionary, sorry. Please try a different word or another resource.
 
+# Import library to assist in finding matches for mistyped words
 Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
 $ python
 Python 3.6.3 |Anaconda, Inc.| (default, Oct 15 2017, 03:27:45) [MSC v.1900 64 bit (AMD64)] on win32
@@ -389,3 +395,232 @@ Type "help", "copyright", "credits" or "license" for more information.
 <difflib.SequenceMatcher object at 0x000002551A38D2B0>
 0.8888888888888888
 >>>
+>>> from difflib import get_close_matches
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyboardInterrupt
+>>> from difflib import get_close_matches
+>>> help(get_close_matches)
+Help on function get_close_matches in module difflib:
+
+get_close_matches(word, possibilities, n=3, cutoff=0.6)
+    Use SequenceMatcher to return list of the best "good enough" matches.
+
+    word is a sequence for which close matches are desired (typically a
+    string).
+
+    possibilities is a list of sequences against which to match word
+    (typically a list of strings).
+
+    Optional arg n (default 3) is the maximum number of close matches to
+    return.  n must be > 0.
+
+    Optional arg cutoff (default 0.6) is a float in [0, 1].  Possibilities
+    that don't score at least that similar to word are ignored.
+
+    The best (no more than n) matches among the possibilities are returned
+    in a list, sorted by similarity score, most similar first.
+
+    >>> get_close_matches("appel", ["ape", "apple", "peach", "puppy"])
+    ['apple', 'ape']
+    >>> import keyword as _keyword
+    >>> get_close_matches("wheel", _keyword.kwlist)
+    ['while']
+    >>> get_close_matches("Apple", _keyword.kwlist)
+    []
+    >>> get_close_matches("accept", _keyword.kwlist)
+    ['except']
+
+>>> import json
+>>> var = json.load(open('data.json', 'r'))
+>>> var_keys = var.keys()
+>>> get_close_matches("rainn", var_keys)
+['rain', 'train', 'rainy']
+>>> get_close_matches("rainn", var_keys)[0]
+'rain'
+>>> exit()
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rain
+Traceback (most recent call last):
+  File "app1.py", line 18, in <module>
+    word = input("Enter a word: ").lower()
+KeyboardInterrupt
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rainn
+Did you mean rain?
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rain
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+
+# Added additional input to reprompt user
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rainn
+Did you mean rain?
+Enter a word: rain
+None
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rainn
+Did you mean rain?
+Enter a word: rain
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+None
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rainn
+Did you mean rain?
+Enter a word: rain
+None
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rainn
+Did you mean rain?
+Enter a word: rain
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+None
+
+# Book process for prompting the user
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rainn
+Did you mean rain? Enter [Y] if yes, and [N] if no: y
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rainn
+Did you mean rain? Enter [Y] if yes, and [N] if no: n
+That word is not in my dictionary. Please try a different word or another resource.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rainn
+Did you mean rain? Enter [Y] if yes, and [N] if no: sadf
+I didn't understand that entry.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: bbtige
+That word is not in my dictionary. Please try a different word or another resource.
+
+# Optimize output 
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: bridge
+['A structure that spans and provides a passage over a road, railway, river, or some other obstacle.', 'A system which connects
+two or more local area networks at layer 2.', 'To be or make bridge over something.', 'The ridge of the nose running from the ro
+ot of the nose down to the tip.', 'An elevated platform above the upper deck of a mechanically propelled ship from which it is n
+avigated.', 'A wrestling move performed from a supine position, lying down face-up.']
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: bridge
+A structure that spans and provides a passage over a road, railway, river, or some other obstacle.
+A system which connects two or more local area networks at layer 2.
+To be or make bridge over something.
+The ridge of the nose running from the root of the nose down to the tip.
+An elevated platform above the upper deck of a mechanically propelled ship from which it is navigated.
+A wrestling move performed from a supine position, lying down face-up.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: bridge
+A structure that spans and provides a passage over a road, railway, river, or some other obstacle.
+&bull;A system which connects two or more local area networks at layer 2.
+&bull;To be or make bridge over something.
+&bull;The ridge of the nose running from the root of the nose down to the tip.
+&bull;An elevated platform above the upper deck of a mechanically propelled ship from which it is navigated.
+&bull;A wrestling move performed from a supine position, lying down face-up.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: bridge
+A structure that spans and provides a passage over a road, railway, river, or some other obstacle.
+&#8226;A system which connects two or more local area networks at layer 2.
+&#8226;To be or make bridge over something.
+&#8226;The ridge of the nose running from the  root of the nose down to the tip.
+&#8226;An elevated platform above the upper deck of a mechanically propelled ship from which it is navigated.
+&#8226;A wrestling move performed from a supine position, lying down face-up.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+bridge
+Enter a word: bridge
+A structure that spans and provides a passage over a road, railway, river, or some other obstacle.
+-A system which connects two or more local area networks at layer 2.
+-To be or make bridge over something.
+-The ridge of the nose running from the root of the nose down to the tip.
+-An elevated platform above the upper deck of a mechanically propelled ship from which it is navigated.
+-A wrestling move performed from a supine position, lying down face-up.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rain
+Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.
+To fall from the clouds in drops of water.
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: apple
+A native Eurasian tree of the genus ''Malus''.
+The popular, crisp, round fruit of the apple tree, usually with red, yellow or green skin, light-coloured flesh and pips inside.
+
+The wood of the apple tree.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: structure
+The whole of the different elements of a company organ.
+Something built up of distinct parts.
+To give structure to.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: pit
+Did you mean spit? Enter [Y] if yes, and [N] if no: y
+['To forcefully evacuate saliva from the mouth.', 'A secretion from the salivary glands (found in the mouth) that can be spat ou
+t.']
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: access road
+['Any street or narrow stretch of paved surface that leads to a specific destination, such as a main highway.']
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: access road
+Traceback (most recent call last):
+  File "app1.py", line 30, in <module>
+    print(in_dict(user_word))
+  File "app1.py", line 16, in in_dict
+    return sdefin[0]
+NameError: name 'sdefin' is not defined
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: access road
+Any street or narrow stretch of paved surface that leads to a specific destination, such as a main highway.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Did you mean rain? Enter [Y] if yes, and [N] if no: n
+That word is not in my dictionary. Please try a different word or another resource.
+
+"""
+
+
+# Section 9: Data Analysis with Pandas
+
+# 
