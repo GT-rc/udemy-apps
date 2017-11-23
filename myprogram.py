@@ -292,4 +292,100 @@ datetime.timedelta(-214)
 
 # Excercise
 
-# 
+# Terminal Notes:
+"""
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python
+Python 3.6.3 |Anaconda, Inc.| (default, Oct 15 2017, 03:27:45) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import json
+>>> data = json.load(open("./data.json", 'r'))
+>>> type(data)
+<class 'dict'>
+>>> data["rain"]
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+>>> exit()
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rain
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: dsfdfg
+Traceback (most recent call last):
+  File "app1.py", line 14, in <module>
+    print(define_word(word))
+  File "app1.py", line 10, in define_word
+    return data[search_key]
+KeyError: 'dsfdfg'
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: rain
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: sdfdgd
+That word is not in my dictionary, sorry. Please try a different word or another resource.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: RiAns
+That word is not in my dictionary, sorry. Please try a different word or another resource.
+RaIn
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ RaIn
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: RaIn
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python
+Python 3.6.3 |Anaconda, Inc.| (default, Oct 15 2017, 03:27:45) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> var = input("Word: ").lower()
+Word: RAIN
+>>> print var
+  File "<stdin>", line 1
+    print var
+            ^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print(var)?
+>>> print(var)
+rain
+>>> exit()
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: RaIN
+['Precipitation in the form of liquid water drops with diameters greater than 0.5 millimetres.', 'To fall from the clouds in dro
+ps of water.']
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python app1.py
+Enter a word: wea9ther
+That word is not in my dictionary, sorry. Please try a different word or another resource.
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Application1-Section8 (master)
+$ python
+Python 3.6.3 |Anaconda, Inc.| (default, Oct 15 2017, 03:27:45) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import difflib
+>>> from difflib import SequenceMatcher
+>>> SequenceMatcher(None, "rainn", "rain")
+<difflib.SequenceMatcher object at 0x000002551A38D2B0>
+0.8888888888888888
+>>>
