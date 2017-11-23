@@ -198,4 +198,98 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 # Section 7: More Functionalities
 
-# Modules
+# Modules, Libraries, & Packages
+
+# Use the import statement in Python
+# os -- for system commands
+# dir(os) -- list of all os commands
+# help(os) -- os help
+# Modules and Libraries come with the default install of python, Packages are installed
+# Packages use pip install command from the command prompt
+# Tested pip with glob2 - worked fine!
+
+# Commenting and Documenting Your Code
+"""
+
+Docstring goes here ----- access from the command line with: filename.__doc__ 
+
+filename = "sample.txt"
+
+# Created empty file
+def create_file():
+    with open(filename, "w") as file:
+        file.write("")     # writing empty string
+"""
+# Putting 'r' at the beginning of the docstring will ignore special charachters in your docstring
+
+# Working with Dates and Times
+
+# datetime and time are the Python modules for this
+# to create a file with the current date:
+"""
+import datetime
+
+filename = datetime.datetime.now()
+when calling filename, convert to str() ---- will still error, see below
+see above
+"""
+# strftime.org -- strftime comes with datetime, is for formatting
+# so --->  str(filename) ---> filename.strftime("%y-%d-%m")
+# you can add/subtract etc with time variables using .timedelta
+"""
+>>> import datetime
+>>> datetime.datetime.now()
+datetime.datetime(2017, 11, 21, 0, 19, 39, 507327)
+>>>
+>>> datetime.datetime.now()
+datetime.datetime(2017, 11, 21, 0, 19, 48, 702211)
+>>> datetime.datetime.now()
+datetime.datetime(2017, 11, 21, 0, 19, 50, 110568)
+>>> datetime.datetime.now()
+datetime.datetime(2017, 11, 21, 0, 19, 51, 544593)
+>>> datetime.datetime.now()
+datetime.datetime(2017, 11, 21, 0, 19, 52, 984228)
+>>> datetime.datetime.now()
+datetime.datetime(2017, 11, 21, 0, 19, 54, 24311)
+>>> temp = datetime.datetime(2016, 5, 13, 11, 0, 0, 0)
+>>> print(temp)
+2016-05-13 11:00:00
+>>> time
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'time' is not defined
+>>> print(temp)
+2016-05-13 11:00:00
+>>> time
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'time' is not defined
+>>> print(temp)
+2016-05-13 11:00:00
+>>> temp
+datetime.datetime(2016, 5, 13, 11, 0)
+>>> temp2 = datetime.datetime(2016, 12, 13, 11, 0, 0, 0)
+>>> temp-temp2
+datetime.timedelta(-214)
+>>> temp.strftime("%Y-%m-%d")
+'2016-05-13'
+>>> import time
+>>> lst = []
+>>> for i in range(5):
+...     lst.append(datetime.datetime.now())
+...     time.sleep(1)
+...
+>>> for i in lst:
+...     print(i)
+...
+2017-11-21 00:31:42.363897
+2017-11-21 00:31:43.364377
+2017-11-21 00:31:44.364855
+2017-11-21 00:31:45.365045
+2017-11-21 00:31:46.365767
+>>>
+"""
+
+# Excercise
+
+# 
