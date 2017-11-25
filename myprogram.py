@@ -623,4 +623,68 @@ That word is not in my dictionary. Please try a different word or another resour
 
 # Section 9: Data Analysis with Pandas
 
+# pip install panda (comes with numpy)
+# for errors, try using a precompiled python library, find the library, then your version of python, and then 32/64 bit windows verion
+# ipython provides better printing of large output, install with pip
+
+# data frame is a special object containing data
+# can name columns and rows (called index)
+# can use list of lists or dictionaries - with dictionaries keys will be columns
+# though normally you will pull data from other files, you can make them in the program
+"""
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files/Section8 (master)
+$ ipython
+Python 3.6.3 |Anaconda, Inc.| (default, Oct 15 2017, 03:27:45) [MSC v.1900 64 bit (AMD64)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 6.2.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import pandas
+# Create a data frame
+In [5]: var = pandas.DataFrame([[1,2,3,4],[5,6,7,8]])
+# print it
+In [6]: var
+Out[6]:
+   0  1  2  3
+0  1  2  3  4
+1  5  6  7  8
+# name the columns
+In [8]: var1 = pandas.DataFrame([[1,2,3],[4,5,6]], columns=["a","b","c"])
+
+In [10]: var1
+Out[10]:
+   a  b  c
+0  1  2  3
+1  4  5  6
+
+In [12]: type(var)
+Out[12]: pandas.core.frame.DataFrame
+# use methods
+In [13]: var.mean()
+Out[13]:
+0    3.0
+1    4.0
+2    5.0
+3    6.0
+dtype: float64
+
+In [14]: var.mean().mean()
+Out[14]: 4.5
+
+In [15]: type(var.mean())
+Out[15]: pandas.core.series.Series
+"""
+
+# Getting started with Jupyter notes are in Jupyter notebook 'Testing One'
+
+"""
+Pandas may require the xlrd library as a dependency. If you get an error such as ModuleNotFoundError: No module named 'xlrd'  you can fix that by installing xlrd:
+
+pip install xlrd 
+"""
+
+# Panda notes are in Jupyter Notebook 'Testing One'
+
+
+# Section 10: Numpty
+
 # 
