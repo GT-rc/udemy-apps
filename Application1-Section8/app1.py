@@ -29,12 +29,16 @@ def in_dict(word):
 
 def main():
     """Main program"""
-    user_word = input("Enter a word: ").lower()
-    output = in_dict(user_word)
-    if type(output) == list:
-        for item in output:
-            print(item)
-    else:
-        print(output)
+    user_word = input("Enter a word (Else enter 'N'): ").lower()
+    while user_word != "n":
+        output = in_dict(user_word)
+        if type(output) == list:
+            for item in output:
+                print(item)
+            user_word = input("Enter a word (Else enter 'N'): ").lower()
+        else:
+            print(output)
+            user_word = input("Enter a word (Else enter 'N'): ").lower()
+    print("Thank you for using this program, have a great day.")
 
 main()
