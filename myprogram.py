@@ -688,3 +688,19 @@ pip install xlrd
 # Section 10: Numpty
 
 # 
+"""
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files (master)
+$ pip install opencv-python
+Collecting opencv-python
+  Downloading opencv_python-3.3.0.10-cp36-cp36m-win_amd64.whl (39.7MB)
+Requirement already satisfied: numpy>=1.11.3 in c:\programdata\miniconda3\lib\site-packages (from opencv-python)
+Installing collected packages: opencv-python
+Successfully installed opencv-python-3.3.0.10
+
+Janet@BenderIsGreat-LAPTOP MINGW64 ~/CodeStuff/UdemyCode/Python_Mega_Course/files (master)
+$ python
+Python 3.6.3 |Anaconda, Inc.| (default, Oct 15 2017, 03:27:45) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cv2
+>>>
+"""
